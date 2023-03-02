@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'gq-root',
+  template:`
+  <div><h1>{{pageTitle}}</h1>
+    <div>Search the Stars!</div>
+  </div>
+  `
 })
 export class AppComponent {
-  title = 'GalaxyQuest';
+  pageTitle: string = 'Galaxy Quest'
 }
