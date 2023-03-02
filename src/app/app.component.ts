@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'gq-root',
   template:`
   <div><h1>{{pageTitle}}</h1>
-    <div>Search the Stars!</div>
+    <gq-galaxies></gq-galaxies>
   </div>
   `
 })

@@ -1,0 +1,15 @@
+<div class="container-fluid">
+    <div class="jumbotron">
+        <h2 class="text-center">{{pageTitle}}</h2>
+        <p class="text-center">We truly do not know how may galaxies are in our Universe.</p>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let galaxy of galaxies">
+            <img [src]='galaxy.galaxyImageUrl'>
+            <figcaption>Copyright: {{ galaxy.imageCopyright }}</figcaption>
+            <figcaption>{{ galaxy.imageCopyright }}</figcaption>
+            <div class="galaxyDescription">{{ galaxy.imageDescription }}></div>
+        </div>
+    </div>
+    
+</div>
