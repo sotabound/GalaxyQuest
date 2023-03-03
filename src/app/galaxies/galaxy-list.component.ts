@@ -1,5 +1,6 @@
 
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import { IGalaxy } from "./galaxies";
 
 @Component({
     selector: 'gq-galaxies',
@@ -7,7 +8,7 @@ import { Component } from "@angular/core";
     
   })
 
-export class GalaxyListComponent {
+export class GalaxyListComponent implements OnInit {
     pageTitle: string = 'Galaxies in our Universe';
     showDescription: boolean = false;
    
@@ -19,8 +20,8 @@ export class GalaxyListComponent {
         this._listFilter = value;
         console.log('In setter:', value);
     }
-
-    galaxies: any[] = [
+    // implemented new Interface
+    galaxies: IGalaxy[] = [
         {
             "galaxyId": 1,
             "galaxyName": "NGC-3169",
@@ -50,6 +51,7 @@ export class GalaxyListComponent {
     };
     // Default for Filter Input
     ngOnInit(): void {
-        this._listFilter = 'cart';
+        this.listFilter = 'cart';
+       console.log(" this is working")
     }
 }
