@@ -1,0 +1,27 @@
+<!--https://www.tutorialstonight.com/bootstrap-image-gallery-->
+<div class='container-fluid'>
+    <div class='jumbotron'>
+        <h2 class='text-center'>{{pageTitle}}</h2>
+        <p class='text-center'>We truly do not know how many galaxies are in our Universe.</p>
+    </div>
+    <div class='row'>
+        <div class = 'col-md-4'>
+            <input type = 'text'
+                [(ngModel)]='listFilter' />
+        </div>
+    </div>
+    <div class='row' *ngFor='let galaxy of filteredGalaxies'>
+        <div class='col-sm-6 col-md-4 col-lg-3' >
+            <img class='thumbNail' [src]='galaxy.galaxyImageUrl'>
+            <figcaption>{{ galaxy.galaxyName | convertToSpaces : '-'}}</figcaption>
+            <figcaption>Copyright: {{ galaxy.imageCopyright }}, {{ galaxy.imageDate | date : 'MMM d, y, h:mm:ss a' }}</figcaption>
+            <button class='btn btn-primary btn-sm' 
+                (click)='toggleDescription()'>
+                {{showDescription ? 'Hide' : 'Show'}} Description</button>
+            <div class='galaxyDescription' *ngIf='showDescription'>{{ galaxy.imageDescription }}></div>
+            <div><gq-star>TEST</gq-star></div>
+            <p>Testing</p>
+        </div>
+    </div>
+    
+</div>
