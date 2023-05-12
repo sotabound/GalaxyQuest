@@ -10,6 +10,7 @@ import { ConvertToSpacesPipe } from './shared/convert-to-spaces.pipe';
 import { StarComponent } from './shared/star.component';
 import { ProductDetailComponent } from './products/product-detail.component';
 import { WelcomeComponent } from './home/welcome.component';
+import { GalaxyDetailComponent } from './galaxies/galaxy-detail.component';
 
 @NgModule({
   // declarations are internal modules and components
@@ -19,7 +20,8 @@ import { WelcomeComponent } from './home/welcome.component';
     ConvertToSpacesPipe,
     StarComponent,
     ProductDetailComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    GalaxyDetailComponent
   ],
   // Imports are external modules  
   imports: [
