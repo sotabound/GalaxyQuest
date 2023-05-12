@@ -7,4 +7,5 @@ export interface IGalaxy {
     imageDescription: string,
     galaxySourceUrl: string,
     galaxyDistance: string,
+    galaxySize: number;
 }

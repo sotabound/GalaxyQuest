@@ -1,17 +1,26 @@
 
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { IGalaxy } from "./galaxies";
+import { GalaxyService } from "./galaxy.service";
+import { Subscription } from "rxjs/internal/Subscription";
 
 @Component({
     selector: 'gq-galaxies',
-    templateUrl: './galaxy-list.component.html'
-    
+    templateUrl: './galaxy-list.component.html',
+        
   })
 
-export class GalaxyListComponent implements OnInit {
+export class GalaxyListComponent implements OnInit, OnDestroy {
+       
     pageTitle: string = 'Galaxies in our Universe';
     showDescription: boolean = false;
-   
+    imageWidth: number = 200;
+    imageHeight: number = 200;
+    imageMargin: number = 2;
+    imageCorner: number = 10;
+    errorMessage: string = '';
+    sub!: Subscription;
+    
     private _listFilter: string = '';
     get listFilter(): string {
         return this._listFilter;
@@ -21,37 +30,35 @@ export class GalaxyListComponent implements OnInit {
         console.log('In setter:', value);
     }
     // implemented new Interface
-    galaxies: IGalaxy[] = [
-        {
-            "galaxyId": 1,
-            "galaxyName": "NGC-3169",
-            "galaxyImageUrl": "https://apod.nasa.gov/apod/image/2303/NGC3169LRGBrevFinalcropCDK1000_27Feb2023_1024.jpg",
-            "imageDate": "2023 March 2",
-            "imageCopyright": "Image Credit & Copyright: Mike Selby & Mark Hanson",
-            "imageDescription": "Spiral galaxy NGC 3169 looks to be unraveling like a ball of cosmic yarn. It lies some 70 million light-years away, south of bright star Regulus toward the faint constellation Sextans.",
-            "galaxySourceUrl": "https://apod.nasa.gov/apod/ap230302.html",
-            "galaxyDistance":"70 Millions Light-Years"
-
-        },
-        {
-            "galaxyId": 2,
-            "galaxyName": "The Flaming-Star Nebula",
-            "galaxyImageUrl": "https://apod.nasa.gov/apod/image/2303/FlamingStarComet_Roell_1080_annotated.jpg",
-            "imageDate": "2023 March 2",
-            "imageCopyright": "Image Credit & Copyright: Thomas Röell",
-            "imageDescription": "Is star AE Aurigae on fire? No. Even though AE Aurigae is named the Flaming Star and the surrounding nebula IC 405 is named the Flaming Star Nebula.",
-            "galaxySourceUrl": "https://apod.nasa.gov/apod/ap230301.html",
-            "galaxyDistance":"1500 Light-Years"
-
-        }
-    ];
+    filteredGalaxies: IGalaxy[] = [];
+    galaxies: IGalaxy[] = [];
+    // Injects the Galaxy Service
+    constructor(private galaxyService: GalaxyService) {}
+    
     // Button to show/hide the description text
     toggleDescription(): void {
         this.showDescription  = !this.showDescription ;
     };
     // Default for Filter Input
+    // Lifecycle hook
     ngOnInit(): void {
-        this.listFilter = 'cart';
-       console.log(" this is working")
+        // initiallizes the Galaxy Service
+        //this.galaxies = this.galaxyService.getGalaxies();
+         //this.listFilter = 'cart';
+        this.sub = this.galaxyService.getGalaxies().subscribe({
+            next: galaxies => {
+                this.galaxies = galaxies;
+                this.filteredGalaxies = this.galaxies
+            },
+            error: err => this.errorMessage = err
+        });
+        
+        console.log(" this is working")
+    }
+    ngOnDestroy(): void {
+        this.sub.unsubscribe();
+    }
+    onRatingClicked(message: string): void {
+        this.pageTitle = 'Galaxy list' + message;
     }
 }

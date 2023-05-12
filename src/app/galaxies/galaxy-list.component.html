@@ -10,15 +10,22 @@
                 [(ngModel)]='listFilter' />
         </div>
     </div>
-    <div class='row' *ngFor='let galaxy of galaxies'>
-        <div class='col-sm-6 col-md-4 col-lg-3' >
-            <img [src]='galaxy.galaxyImageUrl'>
+    <div class='d-inline-flex' *ngFor='let galaxy of galaxies'>
+        <div class='col-7' >
+            <img class='galaxyImg' [src]='galaxy.galaxyImageUrl' [title]='galaxy.galaxyName' 
+            [style.width.px]='imageWidth'
+            [style.height.px]='imageHeight'
+            [style.border-radius.px]='imageCorner'
+            [style.margin.px]='imageMargin'>
             <figcaption>{{ galaxy.galaxyName | convertToSpaces : '-'}}</figcaption>
-            <figcaption>Copyright: {{ galaxy.imageCopyright }}, {{ galaxy.imageDate | date : 'MMM d, y, h:mm:ss a' }}</figcaption>
+            <figcaption class='caption'>Copyright: {{ galaxy.imageCopyright }}, {{ galaxy.imageDate | date : 'MMM d, y, h:mm:ss a' }}</figcaption>
             <button class='btn btn-primary btn-sm' 
                 (click)='toggleDescription()'>
                 {{showDescription ? 'Hide' : 'Show'}} Description</button>
             <div class='galaxyDescription' *ngIf='showDescription'>{{ galaxy.imageDescription }}></div>
+            <div><gq-star [rating]='galaxy.galaxySize'
+                (ratingClicked)='onRatingClicked($event)'>
+            </gq-star></div>
         </div>
     </div>
     
