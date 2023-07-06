@@ -5,8 +5,9 @@ import { GalaxyService } from "./galaxy.service";
 import { Subscription } from "rxjs/internal/Subscription";
 
 @Component({
-    selector: 'gq-galaxies',
+    //selector: 'gq-galaxies',
     templateUrl: './galaxy-list.component.html',
+    styleUrls: ['./galaxy-list.component.css']
         
   })
 
@@ -28,6 +29,7 @@ export class GalaxyListComponent implements OnInit, OnDestroy {
     set listFilter(value: string) {
         this._listFilter = value;
         console.log('In setter:', value);
+        this.filteredGalaxies = this.performFilter(value);
     }
     // implemented new Interface
     filteredGalaxies: IGalaxy[] = [];
@@ -35,7 +37,15 @@ export class GalaxyListComponent implements OnInit, OnDestroy {
     // Injects the Galaxy Service
     constructor(private galaxyService: GalaxyService) {}
     
+    performFilter(filterBy: string): IGalaxy[] {
+        console.log('Perform Filter run: ' + filterBy);
+        filterBy = filterBy.toLocaleLowerCase();
+        return this.galaxies.filter((galaxy: IGalaxy) =>
+            galaxy.galaxyName.toLocaleLowerCase().includes(filterBy));
+    }
+
     // Button to show/hide the description text
+    
     toggleDescription(): void {
         this.showDescription  = !this.showDescription ;
     };

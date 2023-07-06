@@ -9,6 +9,9 @@
             <input type = 'text'
                 [(ngModel)]='listFilter' />
         </div>
+        <div>
+            <h4>Filtered By: {{listFilter}}</h4>
+        </div>
     </div>
     <div class='d-inline-flex' *ngFor='let galaxy of galaxies'>
         <div class='col-7' >
@@ -17,6 +20,8 @@
             [style.height.px]='imageHeight'
             [style.border-radius.px]='imageCorner'
             [style.margin.px]='imageMargin'>
+            <a [routerLink]="['/galaxies', galaxy.galaxyId]">{{galaxy.galaxyName}}</a>
+
             <figcaption>{{ galaxy.galaxyName | convertToSpaces : '-'}}</figcaption>
             <figcaption class='caption'>Copyright: {{ galaxy.imageCopyright }}, {{ galaxy.imageDate | date : 'MMM d, y, h:mm:ss a' }}</figcaption>
             <button class='btn btn-primary btn-sm' 

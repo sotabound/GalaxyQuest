@@ -11,6 +11,8 @@ import { StarComponent } from './shared/star.component';
 import { ProductDetailComponent } from './products/product-detail.component';
 import { WelcomeComponent } from './home/welcome.component';
 import { GalaxyDetailComponent } from './galaxies/galaxy-detail.component';
+import { RouterModule } from '@angular/router';
+import { GalaxyDetailGuard } from './galaxies/galaxy-detail.guard';
 
 @NgModule({
   // declarations are internal modules and components
@@ -28,7 +30,18 @@ import { GalaxyDetailComponent } from './galaxies/galaxy-detail.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot([
+      { path:'galaxies', component: GalaxyListComponent },
+      { 
+        path: 'galaxies/:id', 
+        canActivate: [GalaxyDetailGuard],
+        component: GalaxyDetailComponent 
+      },
+      { path:'welcome', component: WelcomeComponent },
+      { path: '', redirectTo: 'welcome', pathMatch: 'full' },
+      { path: '*', redirectTo: 'welcome', pathMatch: 'full'}
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
