@@ -13,7 +13,7 @@
             <h4>Filtered By: {{listFilter}}</h4>
         </div>
     </div>
-    <div class='d-inline-flex' *ngFor='let galaxy of galaxies'>
+    <div class='d-inline-flex' *ngFor='let galaxy of filteredGalaxies'>
         <div class='col-7' >
             <img class='galaxyImg' [src]='galaxy.galaxyImageUrl' [title]='galaxy.galaxyName' 
             [style.width.px]='imageWidth'
