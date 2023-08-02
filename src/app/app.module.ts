@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { WelcomeComponent } from './home/welcome.component';
 import { RouterModule } from '@angular/router';
 import { GalaxyModule } from './galaxies/galaxy.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -26,6 +27,7 @@ import { GalaxyModule } from './galaxies/galaxy.module';
       { path: '*', redirectTo: 'welcome', pathMatch: 'full'}
     ]),
     GalaxyModule,
+    BrowserAnimationsModule,
         
   ],
   providers: [],
