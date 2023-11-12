@@ -22,5 +22,29 @@
         "galaxyDistance":"1500 Light-Years",
         "galaxySize" : 3
 
+    },
+    {
+        "galaxyId": 3,
+        "galaxyName": "The Flaming-Star Nebula",
+        "galaxyImageUrl": "https://apod.nasa.gov/apod/image/2303/FlamingStarComet_Roell_1080_annotated.jpg",
+        "imageDate": "2023 March 2",
+        "imageCopyright": "Image Credit & Copyright: Thomas Röell",
+        "imageDescription": "Is star AE Aurigae on fire? No. Even though AE Aurigae is named the Flaming Star and the surrounding nebula IC 405 is named the Flaming Star Nebula.",
+        "galaxySourceUrl": "https://apod.nasa.gov/apod/ap230301.html",
+        "galaxyDistance":"1500 Light-Years",
+        "galaxySize" : 3
+
+    },
+    {
+        "galaxyId": 4,
+        "galaxyName": "The Flaming-Star Nebula",
+        "galaxyImageUrl": "https://apod.nasa.gov/apod/image/2303/FlamingStarComet_Roell_1080_annotated.jpg",
+        "imageDate": "2023 March 2",
+        "imageCopyright": "Image Credit & Copyright: Thomas Röell",
+        "imageDescription": "Is star AE Aurigae on fire? No. Even though AE Aurigae is named the Flaming Star and the surrounding nebula IC 405 is named the Flaming Star Nebula.",
+        "galaxySourceUrl": "https://apod.nasa.gov/apod/ap230301.html",
+        "galaxyDistance":"1500 Light-Years",
+        "galaxySize" : 3
+
     }
 ]
